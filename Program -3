@@ -1,0 +1,5 @@
+#Write a code to get the input in the given format and print the output in the given format.
+a =list(map(int,input().split()))
+b =list(map(int,input().split()))
+print(*a)
+print(*b)
