@@ -1,0 +1,127 @@
+##Problem Statement:
+● 🎓🎓 Analytics Vidhya conducted an assessment test to hire a Data Scientist. The
+candidates were evaluated on 5 different subjects A, B, C, D, and E. The marks of
+5 different subjects out of 100 are given below. Help Analytics Vidhya to find out
+the answers of the following questions.
+● 🙇 Who scored the highest marks in the subject B?
+● 🙇 What is the average marks scored in the subject C?
+● 🙇 Who scored the highest percentage of marks?
+● 🙇 If considered only top-4 subjects of a candidate, then who scored the highest
+percentage of marks?
+##
+
+Code:
+student_marks=[['name',['A','B','C','D','E']],
+ ['Ankit',[41,34,45,55,63]],
+ ['Aravind',[42,23,34,44,53]],
+ ['Lakshay',[32,23,13,54,67]],
+ ['Pranav',[21,23,25,56,56]],
+ ['Gyan',[23,82,23,63,34]],
+]
+print(student_marks)
+[['name', ['A', 'B', 'C', 'D', 'E']], ['Ankit', [41, 34, 45, 55, 63]],
+['Aravind', [42, 23, 34, 44, 53]], ['Lakshay', [32, 23, 13, 54, 67]],
+['Pranav', [21, 23, 25, 56, 56]], ['Gyan', [23, 82, 23, 63, 34]]]
+#who scored the highest mark in subjet B
+student_with_marks_in_B = []
+for student in student_marks[1:]:
+ name=student[0]
+ marks_in_B=student[1][1]
+
+ student_with_marks_in_B.append([marks_in_B,name])
+student_with_marks_in_B
+[[34, 'Ankit'], [23, 'Aravind'], [23, 'Lakshay'], [23, 'Pranav'], [82,
+'Gyan']]
+sorted(student_with_marks_in_B)
+[[23, 'Aravind'], [23, 'Lakshay'], [23, 'Pranav'], [34, 'Ankit'], [82,
+'Gyan']]
+sorted(student_with_marks_in_B)[-1][1]
+'Gyan'
+#Avg mark in subject c
+student_avg_marks_in_C = []
+for student in student_marks[2:]:
+ name=student[0]
+ marks_in_C=student[1][1]
+
+ student_avg_marks_in_C.append([marks_in_C,name])
+student_avg_marks_in_C
+[[23, 'Aravind'], [23, 'Lakshay'], [23, 'Pranav'], [82, 'Gyan']]
+sorted(student_avg_marks_in_C)
+[[23, 'Aravind'], [23, 'Lakshay'], [23, 'Pranav'], [82, 'Gyan']]
+x=0
+for i in student_avg_marks_in_C:
+ x+= i[0]
+y=x/len(student_avg_marks_in_C)
+print(y)
+37.75
+#who scored the highest perchentage of marks
+for in_C in student_marks[1:] :
+
+ marks = in_C[1][2]
+ print(marks)
+45
+34
+13
+25
+23
+marks_in_C = []
+for in_C in student_marks[1:] :
+
+ marks = in_C[1][2]
+ marks_in_C.append(marks)
+
+average_marks = sum(marks_in_C)/len(marks_in_C)
+print('Average Marks scored in subject C: ', average_marks)
+Average Marks scored in subject C: 28.0
+#If considered only top-4 subjects of a candidate, then who scored the
+highest percentage of marks
+for marks in student_marks[1:]:
+ name = marks[0]
+ in_all_5 = sorted(marks[1])
+
+ print(name,in_all_5)
+Ankit [34, 41, 45, 55, 63]
+Aravind [23, 34, 42, 44, 53]
+Lakshay [13, 23, 32, 54, 67]
+Pranav [21, 23, 25, 56, 56]
+Gyan [23, 23, 34, 63, 82]
+for marks in student_marks[1:]:
+ name = marks[0]
+ in_top_4 = sorted(marks[1])[1:]
+
+ print(name,in_top_4)
+Ankit [41, 45, 55, 63]
+Aravind [34, 42, 44, 53]
+Lakshay [23, 32, 54, 67]
+Pranav [23, 25, 56, 56]
+Gyan [23, 34, 63, 82]
+for marks in student_marks[1:]:
+ name = marks[0]
+ in_top_4 = sorted(marks[1])[1:]
+ total = sum(in_top_4)
+
+ percentage = (total*100)/400
+
+ print(name, percentage)
+Ankit 51.0
+Aravind 43.25
+Lakshay 44.0
+Pranav 40.0
+Gyan 50.5
+percentage_in_top4 = []
+for marks in student_marks[1:]:
+ name = marks[0]
+ in_top_4 = sorted(marks[1])[1:]
+ total = sum(in_top_4)
+
+ percentage = (total*100)/400
+
+ percentage_in_top4.append([percentage,name])
+sorted(percentage_in_top4)
+[[40.0, 'Pranav'],
+ [43.25, 'Aravind'],
+ [44.0, 'Lakshay'],
+ [50.5, 'Gyan'],
+ [51.0, 'Ankit']]
+sorted(percentage_in_top4)[-1][1]
+'Ankit'
